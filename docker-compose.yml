@@ -1,0 +1,25 @@
+services:
+  redis-savr:
+    image: redis:8.0.3
+    container_name: redis-savr
+    command: [redis-server, "--requirepass", "savrredis1889SSS"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  meilisearch-savr:
+    image: getmeili/meilisearch:latest
+    container_name: meilisearch-savr
+    environment:
+      MEILI_MASTER_KEY: "savrmeilisearch1889SSS"
+    ports:
+      - "7700:7700"
+    volumes:
+      - meili_data:/meili_data
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+  meili_data:

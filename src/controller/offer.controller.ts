@@ -14,8 +14,8 @@ export class OfferController {
     ) {}
 
     @Post("activate")
-    activateOffer(@Req() req, @Body() offerActivationDto: OfferActivationDto) {
-        return this.offerService.activateOffer(req.user.userId, offerActivationDto);
+    activateOffer(@Req() req, @Body() body: OfferActivationDto) {
+        return this.offerService.activateOffer(req.user.userId, body);
     }
 
     @Get("active")

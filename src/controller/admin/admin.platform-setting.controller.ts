@@ -27,9 +27,9 @@ export class AdminPlatformSettingController {
     
     @Post()
     setPlatformSetting(
-        @Body() dto: UpdatePlatformSettingDto
+        @Body() body: UpdatePlatformSettingDto
     ) {
-        return this.adminPlatformSettingService.setPlatformSetting(dto.key, dto.value);
+        return this.adminPlatformSettingService.setPlatformSetting(body.key, body.value);
     }
 
     @Delete(":key")

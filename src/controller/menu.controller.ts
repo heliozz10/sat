@@ -20,8 +20,8 @@ export class MenuController {
     ) {}
 
     @Post()
-    addMenuItem(@Req() req, @Body() dto: MenuItemDto, @UploadedFile() file: Express.Multer.File) {
-        return this.menuService.addMenuItem(req.user.userId, dto, file);
+    addMenuItem(@Req() req, @Body() body: MenuItemDto, @UploadedFile() file: Express.Multer.File) {
+        return this.menuService.addMenuItem(req.user.userId, body, file);
     }
 
     @Get()
@@ -30,8 +30,8 @@ export class MenuController {
     }
 
     @Patch(":id")
-    updateMenuItem(@Req() req, @Param("id") menuItemId: string, @Body() dto: MenuItemDto, @UploadedFile() file: Express.Multer.File) {
-        return this.menuService.updateMenuItem(req.user.userId, menuItemId, dto, file);
+    updateMenuItem(@Req() req, @Param("id") menuItemId: string, @Body() body: MenuItemDto, @UploadedFile() file: Express.Multer.File) {
+        return this.menuService.updateMenuItem(req.user.userId, menuItemId, body, file);
     }
 
     @Delete(":id")

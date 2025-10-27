@@ -56,8 +56,8 @@ export class AdminUserController {
     @Patch(":id/status")
     updateUserStatus(
         @Param("id") id: string,
-        @Body() dto: UpdateUserStatusDto
+        @Body() body: UpdateUserStatusDto
     ) {
-        return this.adminUserService.updateUserStatus(id, dto.status as UserStatus);
+        return this.adminUserService.updateUserStatus(id, body.status as UserStatus);
     }
 }

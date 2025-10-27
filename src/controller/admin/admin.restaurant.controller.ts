@@ -44,8 +44,8 @@ export class AdminRestaurantController {
     @Patch(":id/status")
     updateRestaurantStatus(
         @Param("id") id: string,
-        @Body() dto: UpdateRestaurantStatusDto
+        @Body() body: UpdateRestaurantStatusDto
     ) {
-        return this.adminRestaurantService.updateRestaurantStatus(id, dto);
+        return this.adminRestaurantService.updateRestaurantStatus(id, body);
     }
 }

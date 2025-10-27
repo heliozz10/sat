@@ -56,7 +56,7 @@ export class AdminClientService {
     
         const clients = searchResult.hits;
     
-        const userIds = clients.map(c => c.userId); // assuming `userId` is stored in indexed docs
+        const userIds = clients.map(c => c.userId);
         const { data: userInfo, error } = await this.supabase.rpc('get_user_info', { uids: userIds });
         const userInfoMap = new Map(userInfo.map(user => [user.id, user]));
     

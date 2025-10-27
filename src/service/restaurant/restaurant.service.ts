@@ -106,6 +106,10 @@ export class RestaurantService {
         return data;
     }
 
+    async cancelOrder(userId: string, id: string) {
+        this.orderRepository.update({ id, restaurant: { ownerId: userId } }, { status: "cancelled" });
+    }
+
     private async uploadPhoto(userId: string, restaurant: Restaurant, newPhoto: Express.Multer.File) {
         const fileExtension = newPhoto.originalname.split('.').pop();
         const filePath = `restaurants/${userId}/${new Date()}.${fileExtension}`;

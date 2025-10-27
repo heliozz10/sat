@@ -20,7 +20,7 @@ export class AdminAnalyticsController {
     }
 
     @Get("finances")
-    getFinance(
+    getFinanceAnalytics(
         @Query("startDate") startDate: string,
         @Query("endDate") endDate: string,
         @Query("withDaily") withDaily?: string

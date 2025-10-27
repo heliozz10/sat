@@ -18,24 +18,24 @@ export class AuthController {
     ) {}
 
     @Post("register/send-otp")
-    sendOtp(@Body() dto: RequestOtpDto) {
-        const { phone } = dto;
+    sendOtp(@Body() body: RequestOtpDto) {
+        const { phone } = body;
         this.authService.sendOtp(phone);
     }
 
     @Post("register/verify-otp")
-    verifyOtp(@Body() dto: VerifyOtpDto) {
-        const { phone, otp } = dto;
+    verifyOtp(@Body() body: VerifyOtpDto) {
+        const { phone, otp } = body;
         return this.authService.verifyOtp(phone, otp);
     }
 
     @Post("register")
-    register(@Req() req, @Body() dto: CompleteRegistrationDto, @UploadedFile() file: Express.Multer.File) {
-        return this.authService.register(req.user.sub, dto, file);
+    register(@Req() req, @Body() body: CompleteRegistrationDto, @UploadedFile() file: Express.Multer.File) {
+        return this.authService.register(req.user.sub, body, file);
     }
 
     @Post("login")
-    login(@Body() dto: LoginDto) {
-        return this.authService.login(dto);
+    login(@Body() body: LoginDto) {
+        return this.authService.login(body);
     }
 }

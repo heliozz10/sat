@@ -16,7 +16,7 @@ export class NotificationController {
     }
 
     @Post("mark-as-read")
-    markNotificationAsRead(@Req() req, @Body() dto: ReadNotificationDto) {
-        return this.notificationService.markNotificationAsRead(req.user.id, dto.notificationId);
+    markNotificationAsRead(@Req() req, @Body() body: ReadNotificationDto) {
+        return this.notificationService.markNotificationAsRead(req.user.id, body.notificationId);
     }
 }

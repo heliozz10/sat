@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Post, Req, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Get, Param, Patch, Post, Req, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
 import { RestaurantService } from "../service/restaurant/restaurant.service";
 import { JwtAuthGuard } from "../guard/jwt-auth.guard";
 import { RolesGuard } from "../guard/roles.guard";
@@ -38,5 +38,10 @@ export class RestaurantController {
     @Post("orders/verify-code")
     verifyOrderCode(@Req() req, @Body() dto: OrderVerificationCode) {
         return this.restaurantService.verifyOrderCode(req.user.userId, dto);
+    }
+
+    @Post("orders/:id/cancel")
+    cancelOrder(@Req() req, @Param("id") orderId: string) {
+        return this.restaurantService.cancelOrder(req.user.userId, orderId);
     }
 }

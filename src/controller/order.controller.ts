@@ -15,8 +15,8 @@ export class OrderController {
     ) {}
 
     @Post("initiate-payment")
-    initiatePayment(@Req() req, @Body() createOrdersDto: CreateOrdersDto) {
-        return this.orderService.initiatePayment(req.user.userId, createOrdersDto);
+    initiatePayment(@Req() req, @Body() body: CreateOrdersDto) {
+        return this.orderService.initiatePayment(req.user.userId, body);
     }
 
     @Get()
@@ -25,7 +25,7 @@ export class OrderController {
     }
 
     @Post(":id/review")
-    reviewOrder(@Req() req, @Param("id") orderId: string, @Body() dto: AddReviewDto) {
-        return this.orderService.addReview(req.user.userId, orderId, dto);
+    addReview(@Req() req, @Param("id") orderId: string, @Body() body: AddReviewDto) {
+        return this.orderService.addReview(req.user.userId, orderId, body);
     }
 }

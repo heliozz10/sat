@@ -1,7 +1,7 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 import { ActiveOffer } from "./ActiveOffer";
 import { Order } from "./Order";
-import { Exclude } from "class-transformer";
+import { Exclude, Type } from "class-transformer";
 
 @Index("order_item_pkey", ["id"], { unique: true })
 @Entity("order_item", { schema: "public" })
@@ -23,10 +23,11 @@ export class OrderItem {
   })
   createdAt: Date | null;
 
+  @Exclude()
   @Column("numeric", { name: "customer_price_item", nullable: true })
   customerPriceItem: number | null;
 
-  @Exclude()
+  @Type(() => ActiveOffer)
   @ManyToOne(() => ActiveOffer, (activeOffer) => activeOffer.orderItems)
   @JoinColumn([{ name: "active_offer_id", referencedColumnName: "id" }])
   activeOffer: ActiveOffer;

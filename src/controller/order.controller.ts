@@ -24,6 +24,11 @@ export class OrderController {
         return this.orderService.getOrders(req.user.userId);
     }
 
+    @Get(":id")
+    getOrder(@Req() req, @Param("id") orderId: string) {
+        return this.orderService.getOrder(req.user.userId, orderId);
+    }
+
     @Post(":id/review")
     addReview(@Req() req, @Param("id") orderId: string, @Body() body: AddReviewDto) {
         return this.orderService.addReview(req.user.userId, orderId, body);

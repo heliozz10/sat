@@ -125,6 +125,15 @@ export class OrderService {
         });
     }
 
+    async getOrder(clientId: string, id: string) {
+        return await this.orderRepository.findOne({
+            where: {
+                id,
+                clientId
+            }
+        })
+    }
+
     async addReview(clientId: string, orderId: string, dto: AddReviewDto) {
         this.supabase.rpc("add_review", {
             order_id: orderId,

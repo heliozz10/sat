@@ -9,7 +9,7 @@ import {
 import { Restaurant } from "./Restaurant";
 import { OrderItem } from "./OrderItem";
 import { MenuItem } from "./MenuItem";
-import { Exclude } from "class-transformer";
+import { Exclude, Type } from "class-transformer";
 import { OfferType } from "../enum/app.enums";
 
 
@@ -73,7 +73,7 @@ export class ActiveOffer {
   @JoinColumn([{ name: "restaurant_id", referencedColumnName: "id" }])
   restaurant: Restaurant;
 
-  @Exclude()
+  @Type(() => MenuItem)
   @ManyToOne(() => MenuItem, (menuItem) => menuItem.activeOffers, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",

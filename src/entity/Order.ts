@@ -11,7 +11,7 @@ import { ClientProfile } from "./ClientProfile";
 import { Restaurant } from "./Restaurant";
 import { OrderItem } from "./OrderItem";
 import { Review } from "./Review";
-import { Exclude } from "class-transformer";
+import { Exclude, Type } from "class-transformer";
 
 @Index("idx_orders_client", ["clientId"], {})
 @Index("order_pkey", ["id"], { unique: true })
@@ -79,14 +79,14 @@ export class Order {
   @JoinColumn([{ name: "client_id", referencedColumnName: "id" }])
   client: ClientProfile;
 
-  @Exclude()
+  @Type(() => Restaurant)
   @ManyToOne(() => Restaurant, (restaurant) => restaurant.orders, {
     onDelete: "SET NULL",
   })
   @JoinColumn([{ name: "restaurant_id", referencedColumnName: "id" }])
   restaurant: Restaurant;
 
-  @Exclude()
+  @Type(() => OrderItem)
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, {cascade: true})
   orderItems: OrderItem[];
 

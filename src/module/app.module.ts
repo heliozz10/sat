@@ -18,6 +18,7 @@ import { ScheduledTaskService } from '../service/common/scheduled-task.service';
 import { NotificationModule } from './notification.module';
 import { AdminModule } from './admin.module';
 import { OrderModule } from './order.module';
+import { ClientModule } from './client.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { OrderModule } from './order.module';
     ScheduleModule.forRoot(),
     AuthModule,
     RestaurantModule,
+    ClientModule,
     OfferModule,
     CatalogModule,
     FavoriteModule,

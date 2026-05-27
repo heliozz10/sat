@@ -13,5 +13,5 @@ export class UpdateRestaurantDto {
     @IsOptional()
     @ValidateNested()
     @Type(() => LocationDto)
-    location? : LocationDto;
+    location?: LocationDto;
 }

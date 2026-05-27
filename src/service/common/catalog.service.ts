@@ -45,7 +45,7 @@ export class CatalogService {
 
         return data.map(d => {
             const view = new RestaurantView();
-
+            
             view.id = d.id;
             view.name = d.name;
             view.photoUrl = d.photo_url;

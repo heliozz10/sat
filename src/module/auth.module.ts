@@ -8,6 +8,8 @@ import { ClientProfile } from "../entity/ClientProfile";
 import { Restaurant } from "../entity/Restaurant";
 import { JwtModule } from "@nestjs/jwt";
 import { JwtStrategy } from "../strategy/jwt.strategy";
+import { GeographyService } from "../service/common/geography.service";
+import { FileService } from "../service/common/file.service";
 
 //TODO: fix whole auth module
 @Module({
@@ -19,7 +21,7 @@ import { JwtStrategy } from "../strategy/jwt.strategy";
         })
     ],
     controllers: [AuthController],
-    providers: [AuthService, SupabaseClientService, RedisClientService, JwtStrategy],
+    providers: [AuthService, SupabaseClientService, RedisClientService, JwtStrategy, GeographyService, FileService],
     exports: [JwtModule, JwtStrategy]
 })
 export class AuthModule {}

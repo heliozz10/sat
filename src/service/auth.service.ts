@@ -127,7 +127,7 @@ export class AuthService {
         const accessToken = this.generateToken(userId, profileType, "15m");
         const refreshToken = this.generateToken(userId, profileType, "7d");
 
-        return { accessToken, refreshToken };
+        return { accessToken, refreshToken, profileType };
     }
 
     async refresh(refreshToken: string) {

@@ -11,22 +11,25 @@ export class CatalogController {
     getRestaurants(
         @Query("latitude") latitude: string,
         @Query("longitude") longitude: string,
-        @Query("filter_modes") filterModes: "all",
+        @Query("filter_modes") filterModes = "all",
         @Query("sort_mode") sortMode = "popular",
         @Query("page") page = "1",
         @Query("per_page") perPage = "20"
     ) {
+        let lon = 0, lat = 0;
+
         if(sortMode === "nearby") {
             if(!latitude || !longitude) {
                 return {
                     error: true,
                     message: "latitude and longitude is required for nearby sort mode"
                 }
+            } else {
+                lat = parseFloat(latitude);
+                lon = parseFloat(longitude);
             }
         }
 
-        const lat = parseFloat(latitude);
-        const lon = parseFloat(longitude);
         const pageNum = parseInt(page);
         const perPageNum = parseInt(perPage);
 
